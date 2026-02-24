@@ -89,7 +89,7 @@ const activities = [
   { text: "eating honey bunches of oats", src: "https://images.claireguo.com/about/cereal.png" },
   { text: "learning debussy's arabesques", src: "https://images.claireguo.com/about/debussy.jpg" },
   { text: "reading OUT by natsuo kirino", src: "https://images.claireguo.com/about/out.webp" },
-  { text: "listening to fruit fly by leah dou", src: "https://images.claireguo.com/about/fruitfly.png"}
+  { text: "listening to fruit fly by leah dou", src: "https://images.claireguo.com/about/fruitfly.jpeg"}
 ];
 
 function Landing() {
