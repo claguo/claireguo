@@ -9,7 +9,7 @@ function Footer() {
   const projects = useProjectContext();
   const path = useLocation().pathname;
   const currentProject = useProjectContext().find(
-    (project) => path === `/2025/${project.path}`,
+    (project) => path === `/2026/${project.path}`,
   );
 
   const colors = ["text-blue", "italic text-green", "text-pink"];

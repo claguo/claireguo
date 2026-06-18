@@ -27,7 +27,7 @@ function BackgroundColor({ children }) {
   useEffect(() => {
     if (location.pathname === "/") {
       document.body.className = "bg-black";
-    } else if (location.pathname === "/2025" || location.pathname === "/2025/") {
+    } else if (location.pathname === "/2026" || location.pathname === "/2026/") {
       document.body.className = "bg-bg-gray";
     } else {
       document.body.className = "bg-bg-white";
@@ -48,20 +48,20 @@ function AppContent() {
       {!isLandingPage && <Navbar />}
       <Routes>
         <Route path="/" exact element={<Landing />} />
-        <Route path="/2025" exact element={<Home />} />
-        <Route path="/2025/about" element={<About />} />
+        <Route path="/2026" exact element={<Home />} />
+        <Route path="/2026/about" element={<About />} />
         <Route
-          path="/2025/mochi-health"
+          path="/2026/mochi-health"
           element={
             <ProtectedRoute>
               <Mochi />
             </ProtectedRoute>
           }
         />
-        <Route path="/2025/a11y-buddy" element={<A11yBuddy />} />
-        <Route path="/2025/blooms" element={<Blooms />} />
-        <Route path="/2025/eat-the-ocean" element={<EatTheOcean />} />
-        <Route path="/2025/login" element={<Login />} />
+        <Route path="/2026/a11y-buddy" element={<A11yBuddy />} />
+        <Route path="/2026/blooms" element={<Blooms />} />
+        <Route path="/2026/eat-the-ocean" element={<EatTheOcean />} />
+        <Route path="/2026/login" element={<Login />} />
       </Routes>
       {!isLandingPage && <Footer />}
     </>

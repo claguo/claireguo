@@ -12,7 +12,7 @@ function Login() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from ?? "/2025";
+  const from = location.state?.from ?? "/2026";
 
   useEffect(() => {
     const savedPassword = Cookies.get(PASSWORD_COOKIE_NAME);
@@ -43,7 +43,7 @@ function Login() {
           if (window.history.length > 1) {
             window.history.back();
           } else {
-            navigate("/2025");
+            navigate("/2026");
           }
         }}
       >

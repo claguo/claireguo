@@ -6,12 +6,12 @@ function Hero() {
   return (
     <div className="flex flex-col pt-3xl px-xs lg:px-[20px] pb-lg lg:pb-[120px] lg:gap-md gap-sm max-w-[405px]">
       <div className="text-sm">
-        Improving access to healthcare and building design systems at
+        Building AI-powered travel planning at
         <ButtonLink
           variant="inline"
-          to="https://joinmochi.com/"
+          to="https://stardrift.ai"
           target="_blank"
-          text="&nbsp;Mochi Health"
+          text="&nbsp;Stardrift"
         />
         . BFA in
         <ButtonLink

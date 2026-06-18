@@ -3,8 +3,10 @@ import { useLocation } from "react-router-dom";
 import { useProjectContext } from "../context/ProjectContext";
 
 function ProjectHero() {
-  const path = useLocation().pathname.slice(1);
+  const path = useLocation().pathname.split("/").filter(Boolean).pop();
   const project = useProjectContext().find((project) => project.path === path);
+
+  if (!project) return null;
 
   return (
     <div className="flex flex-col pt-2xl gap-sm lg:gap-xl w-full">

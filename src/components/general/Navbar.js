@@ -76,15 +76,15 @@ function Navbar() {
         <div className="flex flex-col w-full h-full justify-center items-center gap-8">
           <ButtonLink
             variant="ghost"
-            to="/2025"
+            to="/2026"
             onClick={() => setShowOverlay(false)}
-            text={props.active === "/2025" ? "* home" : "home"}
+            text={props.active === "/2026" ? "* home" : "home"}
           />
           <ButtonLink
             variant="ghost"
-            to="/2025/about"
+            to="/2026/about"
             onClick={() => setShowOverlay(false)}
-            text={props.active === "/2025/about" ? "* about" : "about"}
+            text={props.active === "/2026/about" ? "* about" : "about"}
           />
           <ButtonLink
             variant="ghost"
@@ -108,7 +108,7 @@ function Navbar() {
             }`}
           >
             <Link
-              to="/2025"
+              to="/2026"
               className="flex flex-row gap-2xs px-xs pt-3xs items-center cursor-pointer"
             >
               <span className="font-mono italic tracking-normal text-[1.25rem]">
@@ -130,12 +130,12 @@ function Navbar() {
       ) : (
         <div
           className={`flex w-full px-4xs pt-3xs justify-between fixed transition duration-100 ease-in ${
-            active === "/2025" ? "bg-bg-gray" : "bg-bg-white"
+            active === "/2026" ? "bg-bg-gray" : "bg-bg-white"
           } ${show ? "opacity-100" : "opacity-0"}`}
         >
           <Clicksplosion>
             <Link
-              to="/2025"
+              to="/2026"
               className="text-md flex flex-row lg:flex-row gap-2xs px-xs py-3xs items-center cursor-pointer"
             >
               <SplitHover
@@ -153,8 +153,8 @@ function Navbar() {
           </Clicksplosion>
 
           <div className="flex gap-xl">
-            <ButtonLink variant="ghost" text="work" to="/2025" />
-            <ButtonLink variant="ghost" text="about" to="/2025/about" />
+            <ButtonLink variant="ghost" text="work" to="/2026" />
+            <ButtonLink variant="ghost" text="about" to="/2026/about" />
             <ButtonLink
               variant="ghost"
               text="resume"

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useProjectContext } from "../context/ProjectContext";
 
 function ProjectSummary() {
-  const path = useLocation().pathname.slice(1);
+  const path = useLocation().pathname.split("/").filter(Boolean).pop();
   const project = useProjectContext().find((project) => project.path === path);
 
   if (!project) return null;

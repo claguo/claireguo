@@ -22,15 +22,15 @@ function AboutPage() {
             Currently at{" "}
             <ButtonLink
               variant="inline"
-              text="Mochi Health"
-              to="https://joinmochi.com/"
+              text="Stardrift AI"
+              to="https://stardrift.ai"
               target="_blank"
             />
             . Previously at{" "}
             <ButtonLink
               variant="inline"
-              text="Hitch"
-              to="https://www.hitch.com/"
+              text="Mochi Health"
+              to="https://joinmochi.com/"
               target="_blank"
             />{" "}
             and{" "}
