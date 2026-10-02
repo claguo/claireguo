@@ -104,7 +104,7 @@ function Landing() {
     <div className="min-h-screen bg-[#0B0A0F] text-white text-md font-kosugi px-xs lg:px-md">
       <div className="max-w-[1080px]">
       {/* a little shorter than the viewport so the top of the sketchbook peeks above the fold */}
-      <div className="min-h-[calc(100svh-64px)] py-lg flex flex-col justify-center">
+      <div className="relative min-h-[calc(100svh-64px)] py-lg flex flex-col justify-center">
         <p className="mb-lg">hi, i'm <span className="text-pink-light">claire &#9787;</span></p>
 
         <p className="mb-3xs">
@@ -142,6 +142,11 @@ function Landing() {
           <ContactLink text="linkedin" href="https://www.linkedin.com/in/claguo" />
           <ContactLink text="github" href="https://github.com/claguo" />
         </div>
+
+        {/* sits in the section's bottom padding, just above the fold */}
+        <p className="absolute bottom-xs left-0 text-[#8f8f8f]">
+          things i made &darr;
+        </p>
       </div>
 
       <div className="pb-4xl">
