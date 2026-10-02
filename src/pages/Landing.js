@@ -1,4 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
+// import StarlinkChecker from "../components/custom/StarlinkChecker";
+import { Link } from "react-router-dom";
+import Sketchbook from "../components/custom/Sketchbook";
+import Pot, { HORSE, potWidth } from "../components/custom/Pot";
 
 const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -92,9 +96,15 @@ const activities = [
   { text: "listening to fruit fly by leah dou", src: "https://images.claireguo.com/about/fruitfly.jpeg"}
 ];
 
+// a bit larger here than among the other pots on /pots
+const HORSE_WIDTH = potWidth(HORSE, 1.25);
+
 function Landing() {
   return (
-    <div className="min-h-screen bg-[#0B0A0F] text-white text-md font-kosugi px-xs lg:px-md py-lg flex flex-col justify-center">
+    <div className="min-h-screen bg-[#0B0A0F] text-white text-md font-kosugi px-xs lg:px-md">
+      <div className="max-w-[1080px]">
+      {/* a little shorter than the viewport so the top of the sketchbook peeks above the fold */}
+      <div className="min-h-[calc(100svh-64px)] py-lg flex flex-col justify-center">
         <p className="mb-lg">hi, i'm <span className="text-pink-light">claire &#9787;</span></p>
 
         <p className="mb-3xs">
@@ -132,6 +142,37 @@ function Landing() {
           <ContactLink text="linkedin" href="https://www.linkedin.com/in/claguo" />
           <ContactLink text="github" href="https://github.com/claguo" />
         </div>
+      </div>
+
+      <div className="pb-4xl">
+        <Sketchbook />
+        {/* starlink checker, off for now. 480px to the right, or flush with the
+            right edge when that doesn't fit
+        <div
+          className="w-[480px] max-w-full"
+          style={{ marginLeft: "max(0px, min(480px, calc(100% - 480px)))" }}
+        >
+          <StarlinkChecker />
+        </div>
+        */}
+        {/* only the horse itself is clickable, not the whole row */}
+        <Link
+          to="/pots"
+          aria-label="pots"
+          className="mt-2xl block pointer-events-none"
+        >
+          <Pot
+            pot={HORSE}
+            className="pointer-events-auto"
+            // 360px in, or flush with the right edge when that doesn't fit
+            style={{
+              width: HORSE_WIDTH,
+              marginLeft: `max(0px, min(360px, calc(100% - ${HORSE_WIDTH})))`,
+            }}
+          />
+        </Link>
+      </div>
+      </div>
     </div>
   );
 }

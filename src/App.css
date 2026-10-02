@@ -14,6 +14,38 @@
   }
 }
 
+/* stardrift's starlink dark theme, scoped to the checker on the landing page */
+.starlink-dark {
+  font-family: "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: normal;
+  color: var(--sl-foreground);
+  --sl-foreground: oklch(0.9649 0.0045 78.3);
+  --sl-card: oklch(0.2427 0.0063 314.7);
+  --sl-muted: oklch(0.3 0.0063 314.7);
+  --sl-muted-foreground: oklch(0.9649 0.0045 78.3 / 0.6);
+  --sl-border: oklch(1 0 0 / 0.1);
+}
+
+.starlink-dark .font-pixel {
+  font-family: "Doto", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+}
+
+@keyframes blink {
+  0%,
+  65% {
+    opacity: 1;
+  }
+  65%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
 html {
   color: #000000;
   display: flex;

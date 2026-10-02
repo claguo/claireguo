@@ -15,18 +15,22 @@ import A11yBuddy from "./pages/A11yBuddy";
 import EatTheOcean from "./pages/EatTheOcean";
 import Blooms from "./pages/Blooms";
 import Landing from "./pages/Landing";
+import Pots from "./pages/Pots";
 import { ProjectContextProvider } from "./context/ProjectContext";
 import ScrollToTop from "./components/general/ScrollToTop";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/general/ProtectedRoute";
+
+// full-bleed dark pages without the portfolio navbar and footer
+const DARK_PAGES = ["/", "/pots", "/pots/"];
 
 function BackgroundColor({ children }) {
   const location = useLocation();
 
   // Apply different classes or styles based on the route
   useEffect(() => {
-    if (location.pathname === "/") {
-      document.body.className = "bg-black";
+    if (DARK_PAGES.includes(location.pathname)) {
+      document.body.className = "bg-[#0B0A0F]";
     } else if (location.pathname === "/2026" || location.pathname === "/2026/") {
       document.body.className = "bg-bg-gray";
     } else {
@@ -39,7 +43,7 @@ function BackgroundColor({ children }) {
 
 function AppContent() {
   const location = useLocation();
-  const isLandingPage = location.pathname === "/";
+  const isLandingPage = DARK_PAGES.includes(location.pathname);
 
   return (
     <>
@@ -48,6 +52,7 @@ function AppContent() {
       {!isLandingPage && <Navbar />}
       <Routes>
         <Route path="/" exact element={<Landing />} />
+        <Route path="/pots" element={<Pots />} />
         <Route path="/2026" exact element={<Home />} />
         <Route path="/2026/about" element={<About />} />
         <Route
