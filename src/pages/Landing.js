@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Sketchbook from "../components/custom/Sketchbook";
 import Pot, { HORSE, potWidth } from "../components/custom/Pot";
+import posthog from "../posthog";
 
 const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -73,10 +74,15 @@ function InlineLoveCard({ text, src }) {
 }
 
 function ContactLink({ text, href, onClick }) {
+  const handleClick = (event) => {
+    posthog.capture("contact_link_clicked", { channel: text });
+    onClick?.(event);
+  };
+
   return (
     <a
       href={href}
-      onClick={onClick}
+      onClick={handleClick}
       className="text-white hover:text-pink-light transition-colors cursor-pointer"
       target={href?.startsWith("http") ? "_blank" : undefined}
       rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
@@ -114,6 +120,7 @@ function Landing() {
             target="_blank"
             rel="noopener noreferrer"
             className="underline hover:text-pink-light"
+            onClick={() => posthog.capture("stardrift_link_clicked")}
           >
             stardrift
           </a>
@@ -165,6 +172,7 @@ function Landing() {
           to="/pots"
           aria-label="pots"
           className="mt-2xl block pointer-events-none"
+          onClick={() => posthog.capture("pots_opened")}
         >
           <Pot
             pot={HORSE}

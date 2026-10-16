@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMdArrowForward } from "react-icons/io";
 import Tag from "../general/Tag";
+import posthog from "../../posthog";
 
 function ProjectCard({ project, size, className }) {
   const [isHovered, setIsHovered] = useState(false);
   const src = `https://images.claireguo.com/${project.project}-cover.png`;
+  const handleProjectOpen = () => {
+    posthog.capture("project_opened", {
+      project_slug: project.path,
+      requires_access: Boolean(project.protected),
+    });
+  };
 
   return (
     <>
@@ -13,6 +20,7 @@ function ProjectCard({ project, size, className }) {
         <Link
           to={project.protected ? "/2026/login" : `/2026/${project.path}`}
           state={project.protected ? { from: `/2026/${project.path}` } : null}
+          onClick={handleProjectOpen}
           onMouseEnter={() => {
             setIsHovered(true);
           }}
@@ -39,6 +47,7 @@ function ProjectCard({ project, size, className }) {
         <Link
           to={project.protected ? "/2026/login" : `/2026/${project.path}`}
           state={project.protected ? { from: `/2026/${project.path}` } : null}
+          onClick={handleProjectOpen}
           onMouseEnter={() => {
             setIsHovered(true);
           }}

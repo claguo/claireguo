@@ -6,6 +6,7 @@ import React, {
   useRef,
 } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
+import posthog from "../../posthog";
 
 const NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8];
 const PAGES = NUMBERS.map(
@@ -45,6 +46,11 @@ function Sketchbook() {
     (delta) => setIndex((i) => (i + delta + PAGES.length) % PAGES.length),
     [],
   );
+
+  const handleOpen = () => {
+    posthog.capture("sketchbook_opened");
+    setOpen(true);
+  };
 
   useEffect(() => {
     if (paused || open) return;
@@ -108,7 +114,7 @@ function Sketchbook() {
         }`}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
-        onClick={() => setOpen(true)}
+        onClick={handleOpen}
       >
         {/* all pages stay mounted so swapping never waits on a load */}
         {PAGES.map((src, i) => (

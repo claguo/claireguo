@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import Button from "../components/general/Button";
 import Clicksplosion from "../components/custom/Clicksplosion";
 import { IoArrowForwardSharp, IoArrowBackSharp } from "react-icons/io5";
+import posthog from "../posthog";
 
 function Login() {
   const [password, setPassword] = useState("");
@@ -23,6 +24,7 @@ function Login() {
 
   const handleLogin = () => {
     if (password === "amphibian") {
+      posthog.capture("protected_project_access_granted");
       Cookies.set(PASSWORD_COOKIE_NAME, password, {
         expires: 1,
         secure: true,
@@ -31,6 +33,7 @@ function Login() {
       });
       navigate(from, { replace: true });
     } else {
+      posthog.capture("protected_project_access_denied");
       alert("Incorrect password");
     }
   };
