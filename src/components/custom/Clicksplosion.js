@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
 const colours = ["#248EFF", "#FF6BE1", "#00CE7F"];
+const shapes = ["*"];
 const sparks = 40;
 const bangs = 5;
 const speed = 33;
@@ -18,8 +19,6 @@ function Clicksplosion({ children }) {
 
   const swide = window.innerWidth;
   const shigh = window.innerHeight;
-
-  const shapes = ["*"];
 
   useEffect(() => {
     for (let i = 0; i < bangs * sparks; i++) {
