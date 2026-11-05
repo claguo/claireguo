@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Riso Print Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Martian+Mono:wght@100..800&display=swap" />
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+      --font-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    }
+    @layer utilities {
+      .font-mono { font-weight: 250; }
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <nav class="tool-nav font-sans" aria-label="tools">
+      <a href="index.html" aria-current="page">riso</a>
+      <a href="halftone.html">halftones</a>
+    </nav>
+    <div class="header-actions">
+      <button id="undo-btn" class="btn btn-secondary" disabled title="undo (⌘Z)">undo</button>
+      <button id="redo-btn" class="btn btn-secondary" disabled title="redo (⌘⇧Z)">redo</button>
+      <button id="export-btn" class="btn" disabled>export png</button>
+    </div>
+  </header>
+  <input id="file-input" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+
+  <main class="app-main">
+    <section class="preview-wrap">
+      <div id="preview" class="preview empty" aria-label="composite preview">
+        <p class="drop-hint">click or drop an image here</p>
+        <!-- layers injected here as <div class="layer"><canvas/><div class="tint"/></div> -->
+      </div>
+    </section>
+
+    <aside class="layers-panel" id="layers-panel">
+      <!-- one .layer-card per CMYK channel, populated by app.js -->
+    </aside>
+  </main>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

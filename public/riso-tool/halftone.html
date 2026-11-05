@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Riso Print Tool — Halftone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Martian+Mono:wght@100..800&display=swap" />
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+      --font-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    }
+    @layer utilities {
+      .font-mono { font-weight: 250; }
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="halftone.css" />
+</head>
+<body>
+  <header class="app-header">
+    <nav class="tool-nav font-sans" aria-label="tools">
+      <a href="index.html">riso</a>
+      <a href="halftone.html" aria-current="page">halftones</a>
+    </nav>
+    <div class="header-actions">
+      <button id="clear-btn" class="btn btn-secondary" hidden>clear</button>
+    </div>
+  </header>
+  <input id="file-input" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+
+  <main class="halftone-main">
+    <div id="dropzone" class="dropzone" aria-label="image drop zone">
+      <p class="drop-hint">click or drop an image here</p>
+    </div>
+
+    <div id="workspace" class="workspace" hidden>
+      <div class="controls">
+        <div class="mode-toggle" role="group" aria-label="output mode">
+          <button id="mode-halftone" type="button" aria-pressed="true">halftone</button>
+          <button id="mode-ascii" type="button" aria-pressed="false">ascii</button>
+        </div>
+
+        <div class="control-row">
+          <span class="control-label">grid <span id="grid-value" class="control-value">8px</span></span>
+          <input id="grid-input" type="range" min="4" max="24" step="1" value="8" />
+        </div>
+
+        <button id="invert-btn" type="button" class="icon-btn invert-btn" aria-pressed="false">invert</button>
+
+        <div class="control-actions" id="halftone-actions">
+          <button id="download-png" class="btn btn-secondary">download png</button>
+          <button id="download-svg" class="btn btn-secondary">download svg</button>
+        </div>
+        <div class="control-actions" id="ascii-actions" hidden>
+          <button id="copy-text" class="btn btn-secondary">copy text</button>
+          <button id="download-ascii-png" class="btn btn-secondary">download png</button>
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <figure class="pane">
+          <figcaption>original</figcaption>
+          <img id="original-img" alt="original" />
+        </figure>
+        <figure class="pane">
+          <figcaption id="result-label">halftone</figcaption>
+          <canvas id="result-canvas"></canvas>
+          <pre id="ascii-pre" hidden></pre>
+        </figure>
+      </div>
+    </div>
+  </main>
+
+  <script src="halftone.js" type="module"></script>
+</body>
+</html>

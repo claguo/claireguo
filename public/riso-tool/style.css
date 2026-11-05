@@ -1,0 +1,458 @@
+:root {
+  --bg: #f4f1ea;
+  --panel: #ffffff;
+  --ink-text: #1a1a1a;
+  --muted: #6b6b6b;
+  --border: #d9d4c7;
+  --accent: #e94e1b;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: "Martian Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-text);
+  background: var(--bg);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+
+/* Tool switcher — the active link doubles as the page title. */
+.tool-nav {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.tool-nav a {
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+}
+.tool-nav a:hover { color: var(--ink-text); }
+.tool-nav a[aria-current="page"] { color: var(--ink-text); font-weight: 600; }
+
+.header-actions { display: flex; gap: 10px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border: 1px solid var(--ink-text);
+  background: var(--ink-text);
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+}
+.btn:hover { background: var(--accent); border-color: var(--accent); }
+.btn[disabled] { opacity: 0.4; cursor: not-allowed; background: var(--muted); border-color: var(--muted); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink-text);
+  border-color: var(--border);
+}
+.btn-secondary:hover { background: var(--ink-text); border-color: var(--ink-text); color: #fff; }
+.btn-secondary[disabled] { background: transparent; color: var(--muted); border-color: var(--border); }
+
+.app-main {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 18px;
+  padding: 18px;
+  height: calc(100vh - 57px);
+}
+
+.preview-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* The composite preview: white "paper" with multiplied layers on top.
+   When empty, fills the wrapper as a drop zone. Once an image loads, JS sets
+   explicit width/height in pixels to fit the source aspect ratio. */
+.preview {
+  position: relative;
+  background: #ffffff;
+  isolation: isolate;            /* contain blend modes */
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preview.empty {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.preview.empty::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  pointer-events: none;
+}
+.preview.dragover::before { border-color: var(--accent); }
+.preview .drop-hint {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+  padding: 0 16px;
+}
+.preview:not(.empty) .drop-hint { display: none; }
+
+/* Each layer = grayscale canvas + colored tint screened on top.
+   The whole layer multiplies onto layers below. */
+.layer {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.layer[hidden] { display: none; }
+.layer canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.layer .tint {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: screen;
+  background: var(--ink, #000);
+}
+.layer.grayscale .tint { display: none; }
+
+/* Right-side layer controls. */
+.layers-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 4px;
+}
+
+.global-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.global-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  font-size: 11px;
+  color: var(--muted);
+}
+.global-row-label {
+  flex-shrink: 0;
+  width: 76px;
+  letter-spacing: 0.02em;
+}
+.global-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--ink-text);
+  min-width: 0;
+}
+.global-row-value {
+  flex-shrink: 0;
+  width: 36px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-text);
+}
+.icon-btn-sm {
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+}
+
+.layer-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+.layer-card.disabled { opacity: 0.45; }
+.layer-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  padding: 0;
+  appearance: none;
+}
+.swatch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.layer-meta { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.layer-name {
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.layer-name .channel {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.ink-label {
+  font-size: 11px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.layer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* Per-layer curve editor — replaces the old lightness/contrast sliders. */
+.curve-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 2px;
+}
+.curve-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.curve-reset {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0 2px;
+  font: inherit;
+  font-size: 10px;
+  color: var(--muted);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+.curve-reset:hover { color: var(--accent); }
+.curve-svg {
+  width: 100%;
+  height: 70px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: block;
+  background: rgba(0, 0, 0, 0.02);
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+.curve-ref {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+  vector-effect: non-scaling-stroke;
+}
+.curve-path {
+  fill: none;
+  stroke: var(--ink-text);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.curve-pt {
+  fill: var(--panel);
+  stroke: var(--ink-text);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  cursor: grab;
+}
+.curve-pt:hover { fill: var(--accent); stroke: var(--accent); }
+.layer-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--ink-text);
+  min-width: 0;
+}
+.layer-row label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+.layer-row-label {
+  display: inline-block;
+  width: 56px;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.icon-btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--ink-text);
+}
+.icon-btn[aria-pressed="true"] {
+  background: var(--ink-text);
+  color: #fff;
+  border-color: var(--ink-text);
+}
+
+/* Stack actions vertically within the right column of layer-card. */
+.layer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Riso ink palette popover — anchored to a layer swatch on click. */
+.palette-popover {
+  position: fixed;
+  z-index: 100;
+  width: 300px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.palette-item {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 6px 8px;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: var(--ink-text);
+}
+.palette-item:hover { background: rgba(0, 0, 0, 0.05); }
+.palette-item.selected { background: rgba(233, 78, 27, 0.12); }
+
+.popover-header {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding: 4px 8px 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.palette-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  display: inline-block;
+}
+.palette-name {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.palette-hex {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+/* Floating action that appears when 2+ layer-cards are selected. */
+.merge-floating {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 200;
+  padding: 10px 22px;
+  background: var(--ink-text);
+  color: #fff;
+  border: 1px solid var(--ink-text);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+.merge-floating:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.merge-floating[hidden] { display: none; }
