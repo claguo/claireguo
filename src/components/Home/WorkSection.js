@@ -3,7 +3,7 @@ import ProjectCard from "../custom/ProjectCard.js";
 import { useProjectContext } from "../../context/ProjectContext.js";
 
 function WorkSection() {
-  const projects = useProjectContext();
+  const projects = useProjectContext().filter((p) => !p.archiveOnly);
 
   // const [filters, setFilters] = useState([
   //   "ui/ux design",

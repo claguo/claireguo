@@ -16,6 +16,12 @@ import EatTheOcean from "./pages/EatTheOcean";
 import Blooms from "./pages/Blooms";
 import Landing from "./pages/Landing";
 import Pots from "./pages/Pots";
+import Archive from "./pages/Archive";
+import ArchiveProject from "./pages/ArchiveProject";
+import Astros from "./pages/Astros";
+import CollabRISD from "./pages/CollabRISD";
+import GuoSweets from "./pages/GuoSweets";
+import P5js from "./pages/P5js";
 import { ProjectContextProvider } from "./context/ProjectContext";
 import ScrollToTop from "./components/general/ScrollToTop";
 import Login from "./pages/Login";
@@ -54,19 +60,26 @@ function AppContent() {
         <Route path="/" exact element={<Landing />} />
         <Route path="/pots" element={<Pots />} />
         <Route path="/2026" exact element={<Home />} />
-        <Route path="/2026/about" element={<About />} />
+        <Route path="/about" element={<About />} />
         <Route
-          path="/2026/mochi-health"
+          path="/mochi-health"
           element={
             <ProtectedRoute>
               <Mochi />
             </ProtectedRoute>
           }
         />
-        <Route path="/2026/a11y-buddy" element={<A11yBuddy />} />
-        <Route path="/2026/blooms" element={<Blooms />} />
-        <Route path="/2026/eat-the-ocean" element={<EatTheOcean />} />
-        <Route path="/2026/login" element={<Login />} />
+        <Route path="/blooms" element={<Blooms />} />
+        <Route path="/archive/a11y-buddy" element={<A11yBuddy />} />
+        <Route path="/archive/eat-the-ocean" element={<EatTheOcean />} />
+        <Route path="/archive" element={<Archive />} />
+        <Route path="/archive/astros" element={<Astros />} />
+        <Route path="/archive/collab-risd" element={<CollabRISD />} />
+        <Route path="/archive/p5js" element={<P5js />} />
+        <Route path="/archive/guo-sweets" element={<GuoSweets />} />
+        <Route path="/archive/astrobunny" element={<ArchiveProject />} />
+        <Route path="/archive/pair" element={<ArchiveProject />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       {!isLandingPage && <Footer />}
     </>

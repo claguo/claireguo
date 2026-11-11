@@ -10,12 +10,15 @@ function ProjectHero() {
 
   return (
     <div className="flex flex-col pt-2xl gap-sm lg:gap-xl w-full">
-      <div className="object-contain rounded-md overflow-hidden">
-        <img
-          src={`https://images.claireguo.com/${project.project}/cover.png`}
-          alt={project.alt}
-        />
-      </div>
+      {/* archive-only projects have no cover image */}
+      {project.project && (
+        <div className="object-contain rounded-md overflow-hidden">
+          <img
+            src={`https://images.claireguo.com/${project.project}/cover.png`}
+            alt={project.alt}
+          />
+        </div>
+      )}
       <h1 className="text-md font-mono italic tracking-normal lg:text-lg lg:w-[928px] lg:px-lg lg:self-center">
         {project.title}
       </h1>

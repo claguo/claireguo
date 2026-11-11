@@ -82,9 +82,9 @@ function Navbar() {
           />
           <ButtonLink
             variant="ghost"
-            to="/2026/about"
+            to="/about"
             onClick={() => setShowOverlay(false)}
-            text={props.active === "/2026/about" ? "* about" : "about"}
+            text={props.active === "/about" ? "* about" : "about"}
           />
           <ButtonLink
             variant="ghost"
@@ -154,7 +154,7 @@ function Navbar() {
 
           <div className="flex gap-xl">
             <ButtonLink variant="ghost" text="work" to="/2026" />
-            <ButtonLink variant="ghost" text="about" to="/2026/about" />
+            <ButtonLink variant="ghost" text="about" to="/about" />
             <ButtonLink
               variant="ghost"
               text="resume"

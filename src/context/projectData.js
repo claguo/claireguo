@@ -1,17 +1,6 @@
 const projectData = [
   // {
   //   id: 0,
-  //   title: "Internship: Astros",
-  //   categories: ["ui/ux design", "web development"],
-  //   description:
-  //     "I worked as a UI/UX design intern on the Houston Astros' internal website with a team of 7 developers, Summer 2023. I designed and built data analysis tools for scouts, analysts, performance scientists, and coaches.",
-  //   alt: "Houston Astros logo",
-  //   path: "astros",
-  //   category: "Internship",
-  //   duration: "Jun - Aug 2023",
-  // },
-  // {
-  //   id: 0,
   //   project: "mochi",
   //   path: "",
   //   title: "Mochi Health: Humanizing Telemedicine",
@@ -27,6 +16,7 @@ const projectData = [
     id: 0,
     project: "mochi",
     path: "mochi-health",
+    route: "/mochi-health",
     protected: true,
     title: "Mochi Health: Bento Design System",
     description:
@@ -45,6 +35,7 @@ const projectData = [
       "An interactive web app that visualizes global data to highlight women's shared challenges and destigmatize abortion.",
     alt: "Screenshot of web app: a blue globe and statistics",
     path: "blooms",
+    route: "/blooms",
     team: "Just me!",
     duration: "Oct 2024",
     tldr: "tldr",
@@ -53,6 +44,7 @@ const projectData = [
     id: 2,
     project: "a11y",
     path: "a11y-buddy",
+    route: "/archive/a11y-buddy",
     title: "A11y Buddy For VSCode",
     tags: ["2024", "Web dev", "product design", "shipped!"],
     description:
@@ -71,70 +63,84 @@ const projectData = [
       "A bycatch seafood recipe app designed to reduce waste in the New England fishing industry through awareness and education.",
     alt: "Three screenshotted previews of Eat the Ocean app.",
     path: "eat-the-ocean",
+    route: "/archive/eat-the-ocean",
     team: "Just me!",
     duration: "Feb - May 2023",
   },
-  // {
-  //   id: 4,
-  //   project: "collab",
-  //   title: "Collab @ RISD",
-  //   categories: ["design strategy", "graphic design"],
-  //   description:
-  //     "A campus-wide series of events and a digital archive to increase interdisciplinary collaboration at RISD and Brown University.",
-  //   alt: "Posters, profile cards, Instagram posts, and prompt cards I designed for this project.",
-  //   path: "collab-risd",
-  //   category: "Design strategy, UX research, graphic design",
-  //   team: "Yi Kang Sun, Jimmy Zhong, Ke Xu, Jenny Du, + me",
-  //   duration: "Feb - May 2023",
-  //   tldr: "This project was a semester-long Collaborative Study Project, during which a group of 4 other industrial and graphic designers and I sought to increase interdisciplinary collaboration at RISD. Over the course of four months, we designed, tested, and implemented two solutions:",
-  // },
-  // {
-  //     id: 3,
-  //     title: 'experiments in p5.js',
-  //     thumbnail: '/imgs/eattheoceanthumb.png',
-  //     type: 'Creative Coding',
-  //     description: 'First time creative coding!',
-  //     path: 'p5js',
-  //     category: 'Individual Project',
-  //     duration: 'May 2023 (3 wks)',
-  //     tldr: 'My first time using p5.js, in these creative coding experiemntes, I played with color, line, transparency, and mouse interactivity to create meditative experiences.',
-  //     button: true
-  // },
 
-  // {
-  //   id: 5,
-  //   title: "guo sweets",
-  //   categories: ["graphic design", "illustration"],
-  //   description:
-  //     "Recipes for my favorite homemade desserts made by my mom compiled into a zine; a documentation of family memory and culture.",
-  //   alt: "First two pages of the Guo Sweets zine.",
-  //   path: "guo-sweets",
-  //   category: "Individual Project",
-  //   duration: "Dec - Jan 2022",
-  // },
-  // {
-  //   id: 6,
-  //   title: "AstroBunny",
-  //   categories: ["design strategy", "game development"],
-  //   description:
-  //     'My research into the relationship between femininity, gender, and shame in video games. AstroBunny is a "feminine" endless shooter game I created in response to my research in order to test my theories with players.',
-  //   alt: "AstroBunny screenshots: start, game, and end screen.",
-  //   path: "astrobunny",
-  //   category: "Individual Projects",
-  //   duration: "Sep - Dec 2023",
-  // },
-  // {
-  //   id: 7,
-  //   title: "Pair",
-  //   categories: ["design strategy", "graphic design"],
-  //   description:
-  //     "A pair of devices that aids people medical adherence. Submitted to Stanford Life Transition Design Challenge.",
-  //   alt: "Rendering of Pair.",
-  //   path: "pair",
-  //   category: "Group Project",
-  //   team: "Deelia Wang, Jasmine Lee, Riya Kesari, and me",
-  //   duration: "Nov - Dec 2023",
-  // },
+  // archive-only projects: listed on /archive, not on the home or landing grids
+  {
+    id: 5,
+    path: "astros",
+    route: "/archive/astros",
+    archiveOnly: true,
+    title: "Internship: Astros",
+    tags: ["2023", "UI/UX design", "web dev"],
+    description:
+      "Designing and building data analysis tools for the Houston Astros' scouts, analysts, performance scientists, and coaches.",
+    team: "7 developers + me",
+    duration: "Jun - Aug 2023",
+  },
+  {
+    id: 6,
+    path: "collab-risd",
+    route: "/archive/collab-risd",
+    archiveOnly: true,
+    title: "Collab @ RISD",
+    tags: ["2023", "Design strategy", "UX research", "graphic design"],
+    description:
+      "A campus-wide series of events and a digital archive to increase interdisciplinary collaboration at RISD and Brown University.",
+    team: "Yi Kang Sun, Jimmy Zhong, Ke Xu, Jenny Du, + me",
+    duration: "Feb - May 2023",
+  },
+  {
+    id: 7,
+    path: "p5js",
+    route: "/archive/p5js",
+    archiveOnly: true,
+    title: "Experiments in p5.js",
+    tags: ["2023", "Creative coding"],
+    description:
+      "My first time creative coding: meditative sketches playing with color, line, transparency, and mouse interactivity.",
+    team: "Just me!",
+    duration: "May 2023 (3 wks)",
+  },
+  {
+    id: 8,
+    path: "astrobunny",
+    route: "/archive/astrobunny",
+    archiveOnly: true,
+    title: "AstroBunny",
+    tags: ["2023", "Design strategy", "game dev"],
+    description:
+      'My research into the relationship between femininity, gender, and shame in video games. AstroBunny is a "feminine" endless shooter game I created in response to my research in order to test my theories with players.',
+    team: "Just me!",
+    duration: "Sep - Dec 2023",
+  },
+  {
+    id: 9,
+    path: "pair",
+    route: "/archive/pair",
+    archiveOnly: true,
+    title: "Pair",
+    tags: ["2023", "Design strategy", "graphic design"],
+    description:
+      "A pair of devices that aids people's medical adherence. Submitted to the Stanford Life Transition Design Challenge.",
+    team: "Deelia Wang, Jasmine Lee, Riya Kesari, + me",
+    duration: "Nov - Dec 2023",
+  },
+  {
+    id: 10,
+    path: "guo-sweets",
+    route: "/archive/guo-sweets",
+    archiveOnly: true,
+    title: "Guo Sweets",
+    tags: ["2022", "Graphic design", "illustration"],
+    description:
+      "Recipes for my favorite homemade desserts made by my mom compiled into a zine; a documentation of family memory and culture.",
+    team: "Just me!",
+    duration: "Dec 2022 - Jan 2023",
+  },
 ];
 
 export default projectData;

@@ -6,10 +6,10 @@ import Clicksplosion from "../custom/Clicksplosion";
 import { useProjectContext } from "../../context/ProjectContext";
 
 function Footer() {
-  const projects = useProjectContext();
+  const projects = useProjectContext().filter((p) => !p.archiveOnly);
   const path = useLocation().pathname;
   const currentProject = useProjectContext().find(
-    (project) => path === `/2026/${project.path}`,
+    (project) => path === project.route,
   );
 
   const colors = ["text-blue", "italic text-green", "text-pink"];
