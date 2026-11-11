@@ -31,7 +31,7 @@ function Footer() {
         </span>
       </Clicksplosion>
       {currentProject && (
-        <span className="font-mono italic tracking-normal">Other projects</span>
+        <span className="font-mono tracking-normal">Other projects</span>
       )}
 
       {currentProject && (

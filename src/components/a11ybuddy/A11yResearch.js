@@ -38,7 +38,7 @@ function A11yResearch() {
       <div className="flex flex-col gap-md">
         <TextStack
           header="Pain point 1"
-          className="font-mono italic tracking-normal text-text-subtle"
+          className="font-mono tracking-normal text-text-subtle"
         >
           <p>
             <span className="text-text-a11y font-medium">
@@ -50,7 +50,7 @@ function A11yResearch() {
         </TextStack>
         <TextStack
           header="Pain point 2"
-          className="font-mono italic tracking-normal text-text-subtle"
+          className="font-mono tracking-normal text-text-subtle"
         >
           <p>
             <span className="text-text-a11y font-medium">
@@ -62,7 +62,7 @@ function A11yResearch() {
         </TextStack>
         <TextStack
           header="Pain point 3"
-          className="font-mono italic tracking-normal text-text-subtle"
+          className="font-mono tracking-normal text-text-subtle"
         >
           <p>
             <span className="text-text-a11y font-medium">
@@ -83,7 +83,7 @@ function A11yResearch() {
       {/* DESIGN PRINCIPLES */}
       <div className="flex flex-col gap-2xs lg:flex-row">
         <Card className="border-[1px] p-xs rounded-[4px] flex-1">
-          <span className="font-mono italic tracking-normal text-text-subtle">
+          <span className="font-mono tracking-normal text-text-subtle">
             Design Principle 1
           </span>
           <img
@@ -100,7 +100,7 @@ function A11yResearch() {
           </TextStack>
         </Card>
         <Card className="border-[1px] p-xs rounded-[4px] flex-1">
-          <span className="font-mono italic tracking-normal text-text-subtle">
+          <span className="font-mono tracking-normal text-text-subtle">
             Design Principle 2
           </span>
           <img
@@ -115,7 +115,7 @@ function A11yResearch() {
           </TextStack>
         </Card>
         <Card className="border-[1px] p-xs rounded-[4px] flex-1">
-          <span className="font-mono italic tracking-normal text-text-subtle">
+          <span className="font-mono tracking-normal text-text-subtle">
             Design Principle 3
           </span>
           <img

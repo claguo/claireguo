@@ -71,7 +71,7 @@ function LoveCard(props) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         className={`flex cursor-default gap-3xs w-full tracking-normal ${
-          isHovered ? "text-pink" : "italic"
+          isHovered ? "text-pink" : ""
         }`}
       >
         <span className="font-sans text-md">*</span>

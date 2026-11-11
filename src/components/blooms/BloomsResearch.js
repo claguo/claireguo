@@ -8,7 +8,7 @@ function BloomsResearch() {
     <Section tagText="Research" project="blooms">
       <div className="flex flex-col gap-xs">
         <Card className="border-b-[1px]">
-          <span className="font-mono italic tracking-normal text-text-subtle">
+          <span className="font-mono tracking-normal text-text-subtle">
             Insight 1
           </span>
           <TextStack header="A lack of social support causes feelings of guilt and shame in women.">
@@ -22,7 +22,7 @@ function BloomsResearch() {
           </TextStack>
         </Card>
         <Card className="border-b-[1px]">
-          <span className="font-mono italic tracking-normal text-text-subtle">
+          <span className="font-mono tracking-normal text-text-subtle">
             Insight 2
           </span>
           <TextStack header="Social and environmental determinants affect health outcomes.">
@@ -35,7 +35,7 @@ function BloomsResearch() {
           </TextStack>
         </Card>
         <Card>
-          <span className="font-mono italic tracking-normal text-text-subtle">
+          <span className="font-mono tracking-normal text-text-subtle">
             Insight 3
           </span>
           <TextStack header="Logistical difficulties involved getting an abortion cause stress that result in negative mental health outcomes.">

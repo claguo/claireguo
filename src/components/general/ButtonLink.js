@@ -13,15 +13,15 @@ function ButtonLink({
 }) {
   const getClasses = () => {
     if (variant === "ghost") {
-      return `flex items-center gap-4xs lg:gap-3xs font-mono italic px-xs py-3xs hover:not-italic hover:text-pink ${
+      return `flex items-center gap-4xs lg:gap-3xs font-mono px-xs py-3xs hover:text-pink ${
         className || ""
       }`;
     } else if (variant === "inline") {
-      return `inline-flex items-center gap-4xs lg:gap-3xs cursor-pointer font-mono italic tracking-tight hover:not-italic hover:text-pink ${
+      return `inline-flex items-center gap-4xs lg:gap-3xs cursor-pointer font-mono tracking-tight hover:text-pink ${
         className || ""
       }`;
     } else {
-      return `flex items-center gap-4xs lg:gap-3xs font-mono italic px-xs py-3xs rounded-sm bg-text-blooms hover:bg-text-blooms/90 text-white hover:not-italic ${
+      return `flex items-center gap-4xs lg:gap-3xs font-mono px-xs py-3xs rounded-sm bg-text-blooms hover:bg-text-blooms/90 text-white ${
         className || ""
       }`;
     }

@@ -11,7 +11,7 @@ function ProjectSummary() {
   return (
     <div className="flex gap-xs lg:text-sm lg:text-sm lg:justify-between lg:gap-md text-sm">
       <div className="flex flex-col gap-3xs lg:gap-2xs flex-1">
-        <span className="font-mono italic tracking-normal text-text-subtle text-sm">
+        <span className="font-mono tracking-normal text-text-subtle text-sm">
           {" "}
           What?{" "}
         </span>
@@ -19,7 +19,7 @@ function ProjectSummary() {
       </div>
 
       <div className="flex flex-col gap-3xs lg:gap-2xs flex-1">
-        <span className="font-mono italic tracking-normal text-text-subtle text-sm">
+        <span className="font-mono tracking-normal text-text-subtle text-sm">
           {" "}
           Who?{" "}
         </span>
@@ -27,7 +27,7 @@ function ProjectSummary() {
       </div>
 
       <div className="flex flex-col gap-3xs lg:gap-2xs flex-1">
-        <span className="font-mono italic tracking-normal text-text-subtle text-sm">
+        <span className="font-mono tracking-normal text-text-subtle text-sm">
           {" "}
           When?{" "}
         </span>

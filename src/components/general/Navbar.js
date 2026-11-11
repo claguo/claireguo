@@ -111,12 +111,12 @@ function Navbar() {
               to="/2026"
               className="flex flex-row gap-2xs px-xs pt-3xs items-center cursor-pointer"
             >
-              <span className="font-mono italic tracking-normal text-[1.25rem]">
+              <span className="font-mono tracking-normal text-[1.25rem]">
                 {" "}
                 claire
               </span>
               <span className="font-sans text-[1.25rem]">*</span>
-              <span className="font-mono italic tracking-normal text-[1.25rem]">
+              <span className="font-mono tracking-normal text-[1.25rem]">
                 {" "}
                 guo
               </span>

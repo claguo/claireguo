@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mono: ["Space Mono"],
+        mono: ["Kosugi Maru"],
         sans: ["Inter"],
         kosugi: ["Kosugi Maru"],
       },
@@ -37,6 +37,10 @@ module.exports = {
         "text-blooms": "#DA1699",
         "border-blooms": "#FF3EBF",
         "bg-blooms": "#FF3EBF26",
+
+        "text-stardrift": "#BD2717",
+        "border-stardrift": "#E12D19",
+        "bg-stardrift": "#E12D1926",
       },
       fontSize: {
         xs: "0.75rem",

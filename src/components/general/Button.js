@@ -4,15 +4,15 @@ import PropTypes from "prop-types";
 function Button({ variant = "default", onClick, className, children }) {
   const getClasses = () => {
     if (variant === "ghost") {
-      return `flex items-center gap-3xs font-mono italic px-xs py-3xs hover:not-italic ${
+      return `flex items-center gap-3xs font-mono px-xs py-3xs ${
         className || ""
       }`;
     } else if (variant === "inline") {
-      return `inline-block cursor-pointer font-mono italic hover:not-italic hover:text-pink ${
+      return `inline-block cursor-pointer font-mono hover:text-pink ${
         className || ""
       }`;
     } else {
-      return `bg-text-blooms text-white flex items-center gap-3xs font-mono italic px-xs py-3xs hover:bg-text-blooms/90 rounded-sm hover:not-italic ${
+      return `bg-text-blooms text-white flex items-center gap-3xs font-mono px-xs py-3xs hover:bg-text-blooms/90 rounded-sm ${
         className || ""
       }`;
     }
