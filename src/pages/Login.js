@@ -17,13 +17,13 @@ function Login() {
 
   useEffect(() => {
     const savedPassword = Cookies.get(PASSWORD_COOKIE_NAME);
-    if (savedPassword === "benny") {
+    if (savedPassword === "benny26") {
       navigate(from, { replace: true });
     }
   }, [from, navigate]);
 
   const handleLogin = () => {
-    if (password === "benny") {
+    if (password === "benny26") {
       posthog.capture("protected_project_access_granted");
       Cookies.set(PASSWORD_COOKIE_NAME, password, {
         expires: 1,

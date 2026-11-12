@@ -6,7 +6,7 @@ function ProtectedRoute({ children }) {
   const location = useLocation();
   const password = Cookies.get("password");
 
-  if (password !== "benny") {
+  if (password !== "benny26") {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
 
