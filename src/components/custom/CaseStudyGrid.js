@@ -31,13 +31,13 @@ function CaseStudyCard({ project }) {
         />
       </div>
       <div className="flex flex-col gap-3xs lg:flex-1 lg:max-w-[440px]">
-        <p className="text-[1.25rem] group-hover:text-pink-light transition-colors">
+        <p className="group-hover:text-pink-light transition-colors">
           {project.title}
         </p>
         <p className="font-sans text-[#8f8f8f] text-sm">
           {project.description}
         </p>
-        <p className="text-[#5f5f6a] text-sm">
+        <p className="text-[#8f8f8f] text-sm">
           {project.tags.map((tag) => tag.toLowerCase()).join(" · ")}
         </p>
       </div>
