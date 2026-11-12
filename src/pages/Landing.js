@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 // import StarlinkChecker from "../components/custom/StarlinkChecker";
 import { Link } from "react-router-dom";
 import Sketchbook from "../components/custom/Sketchbook";
+import CaseStudyGrid from "../components/custom/CaseStudyGrid";
 import Pot, { HORSE, potWidth } from "../components/custom/Pot";
 import posthog from "../posthog";
 
@@ -108,7 +109,7 @@ const HORSE_WIDTH = potWidth(HORSE, 1.25);
 function Landing() {
   return (
     <div className="min-h-screen bg-[#0B0A0F] text-white text-md font-kosugi px-xs lg:px-md">
-      <div className="max-w-[1080px]">
+      <div className="max-w-[1080px] mx-auto">
       {/* a little shorter than the viewport so the top of the sketchbook peeks above the fold */}
       <div className="relative min-h-[calc(100svh-64px)] py-lg flex flex-col justify-center">
         <p className="mb-lg">hi, i'm <span className="text-pink-light">claire &#9787;</span></p>
@@ -152,11 +153,16 @@ function Landing() {
 
         {/* sits in the section's bottom padding, just above the fold */}
         <p className="absolute bottom-xs left-0 text-[#8f8f8f]">
-          things i made &darr;
+          case studies &darr;
         </p>
       </div>
 
+      <div className="pb-[240px]">
+        <CaseStudyGrid />
+      </div>
+
       <div className="pb-4xl">
+        <p className="mb-md text-[#8f8f8f]">things i made &darr;</p>
         <Sketchbook />
         {/* starlink checker, off for now. 480px to the right, or flush with the
             right edge when that doesn't fit

@@ -14,6 +14,22 @@ const projectData = [
   // },
   {
     id: 0,
+    project: "stardrift",
+    path: "stardrift",
+    route: "/stardrift",
+    protected: true,
+    title: "Stardrift: a Proactive AI Travel Assistant",
+    description:
+      "Redesigning Stardrift's iOS app from a trip planner into a proactive travel assistant that helps you when you need it.",
+    alt: "Stardrift iOS screens: a Tokyo and Osaka trip page and a flight booking, with a leave-for-the-airport notification and a weather card",
+    tags: ["2026", "Product design", "iOS dev", "shipped!"],
+    team: "2 engineers + me",
+    duration: "Jun - Sep 2026",
+    // the case study page reuses the card cover as its hero
+    heroSrc: "https://images.claireguo.com/stardrift-cover.png",
+  },
+  {
+    id: 1,
     project: "mochi",
     path: "mochi-health",
     route: "/mochi-health",
@@ -27,7 +43,36 @@ const projectData = [
     duration: "Dec 2024 - Mar 2025",
   },
   {
-    id: 1,
+    id: 2,
+    project: "eto",
+    title: "Eat the Ocean",
+    tags: ["2023", "Product design"],
+    description:
+      "A bycatch seafood recipe app designed to reduce waste in the New England fishing industry through awareness and education.",
+    alt: "Three screenshotted previews of Eat the Ocean app.",
+    path: "eat-the-ocean",
+    route: "/archive/eat-the-ocean",
+    archiveOnly: true,
+    team: "Just me!",
+    duration: "Feb - May 2023",
+  },
+  {
+    id: 3,
+    project: "a11y",
+    path: "a11y-buddy",
+    route: "/archive/a11y-buddy",
+    archiveOnly: true,
+    title: "A11y Buddy For VSCode",
+    tags: ["2024", "Web dev", "product design", "shipped!"],
+    description:
+      "A VSCode extension pet care game designed to encourage web developers to proactively implement web accessibility.",
+    alt: "A11y Buddy screenshot",
+    team: "Anna Ohrt + me",
+    duration: "Nov 2023 - May 2024",
+  },
+
+  {
+    id: 4,
     project: "blooms",
     title: "Blooms",
     tags: ["2024", "Web dev", "design research", "shipped!"],
@@ -39,33 +84,6 @@ const projectData = [
     team: "Just me!",
     duration: "Oct 2024",
     tldr: "tldr",
-  },
-  {
-    id: 2,
-    project: "a11y",
-    path: "a11y-buddy",
-    route: "/archive/a11y-buddy",
-    title: "A11y Buddy For VSCode",
-    tags: ["2024", "Web dev", "product design", "shipped!"],
-    description:
-      "A VSCode extension pet care game designed to encourage web developers to proactively implement web accessibility.",
-    alt: "A11y Buddy screenshot",
-    team: "Anna Ohrt + me",
-    duration: "Nov 2023 - May 2024",
-  },
-
-  {
-    id: 3,
-    project: "eto",
-    title: "Eat the Ocean",
-    tags: ["2023", "Product design"],
-    description:
-      "A bycatch seafood recipe app designed to reduce waste in the New England fishing industry through awareness and education.",
-    alt: "Three screenshotted previews of Eat the Ocean app.",
-    path: "eat-the-ocean",
-    route: "/archive/eat-the-ocean",
-    team: "Just me!",
-    duration: "Feb - May 2023",
   },
 
   // archive-only projects: listed on /archive, not on the home or landing grids

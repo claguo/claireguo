@@ -14,6 +14,7 @@ import Mochi from "./pages/Mochi";
 import A11yBuddy from "./pages/A11yBuddy";
 import EatTheOcean from "./pages/EatTheOcean";
 import Blooms from "./pages/Blooms";
+import Stardrift from "./pages/Stardrift";
 import Landing from "./pages/Landing";
 import Pots from "./pages/Pots";
 import Archive from "./pages/Archive";
@@ -66,6 +67,14 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <Mochi />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/stardrift"
+          element={
+            <ProtectedRoute>
+              <Stardrift />
             </ProtectedRoute>
           }
         />

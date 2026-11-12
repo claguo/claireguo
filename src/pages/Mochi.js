@@ -14,7 +14,7 @@ function Mochi() {
 
   useEffect(() => {
     const password = Cookies.get("password");
-    if (password !== "amphibian") {
+    if (password !== "benny") {
       navigate("/login", {
         state: { from: location.pathname },
       });

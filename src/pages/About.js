@@ -1,6 +1,4 @@
 import React, { useLayoutEffect } from "react";
-import Section from "../components/general/Section";
-import LoveCards from "../components/custom/LoveCards";
 import ButtonLink from "../components/general/ButtonLink";
 
 function AboutPage() {
@@ -9,8 +7,8 @@ function AboutPage() {
   });
 
   return (
-    <section className="px-xs lg:px-[20px] flex flex-col pt-3xl pb-lg w-screen overflow-hidden">
-      <div className="flex flex-col-reverse lg:flex-row lg:gap-md pb-xl gap-sm lg:gap-xl w-full">
+    <section className="px-xs lg:px-[20px] flex flex-col pt-3xl pb-lg overflow-hidden w-fit mx-auto">
+      <div className="flex flex-col-reverse lg:flex-row lg:gap-md pb-xl gap-sm lg:gap-xl">
         <div className="flex flex-col lg:gap-md gap-sm max-w-[405px]">
           <p className="text-sm text-left">
             I'm Claire, a product designer passionate about building social
@@ -74,19 +72,13 @@ function AboutPage() {
               target="_blank"
             />
           </div>
-
-          <span className="text-md">*</span>
         </div>
         <img
           src="https://images.claireguo.com/about/pfp.jpg"
           alt="Me, holding my cat, Benny"
-          className="object-cover object-[0%_33%] lg:object-center max-h-[240px] lg:max-h-none w-full lg:w-[20%] rounded-[4px]"
+          className="object-cover object-[0%_33%] lg:object-center max-h-[240px] lg:max-h-none w-full lg:w-[240px] rounded-[4px]"
         />
       </div>
-
-      <Section tagText="Outside of the studio, I am..." project="blooms">
-        <LoveCards />
-      </Section>
     </section>
   );
 }

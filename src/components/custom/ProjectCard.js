@@ -28,7 +28,7 @@ function ProjectCard({ project, size, className }) {
             setIsHovered(false);
           }}
           className={`flex flex-col lg:items-center gap-2xs lg:gap-xs lg:flex-1 shrink-0 w-[240px] font-mono tracking-normal ${
-            isHovered ? "text-pink" : "italic"
+            isHovered ? "text-pink" : ""
           } ${className}`}
         >
           <div className="flex overflow-hidden rounded-sm object-cover w-full">

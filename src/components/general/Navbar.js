@@ -108,7 +108,7 @@ function Navbar() {
             }`}
           >
             <Link
-              to="/2026"
+              to="/"
               className="flex flex-row gap-2xs px-xs pt-3xs items-center cursor-pointer"
             >
               <span className="font-mono tracking-normal text-[1.25rem]">
@@ -135,7 +135,7 @@ function Navbar() {
         >
           <Clicksplosion>
             <Link
-              to="/2026"
+              to="/"
               className="text-md flex flex-row lg:flex-row gap-2xs px-xs py-3xs items-center cursor-pointer"
             >
               <SplitHover

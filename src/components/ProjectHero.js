@@ -14,12 +14,15 @@ function ProjectHero() {
       {project.project && (
         <div className="object-contain rounded-md overflow-hidden">
           <img
-            src={`https://images.claireguo.com/${project.project}/cover.png`}
+            src={
+              project.heroSrc ||
+              `https://images.claireguo.com/${project.project}/cover.png`
+            }
             alt={project.alt}
           />
         </div>
       )}
-      <h1 className="text-md font-mono italic tracking-normal lg:text-lg lg:w-[928px] lg:px-lg lg:self-center">
+      <h1 className="text-md font-mono tracking-normal lg:text-lg lg:w-[928px] lg:px-lg lg:self-center">
         {project.title}
       </h1>
     </div>
